@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Імітаційне моделювання</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i&display=swap&subset=cyrillic" rel="stylesheet">
+</head>
+<body>
+
+<div class="im">
+    <button class="im-switch hidden" id="toggle-sections">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <section class="js-section" id="start">
+        <h1 class="im_title">
+            Задача оптимального резервування
+        </h1>
+        <div class="im_main">
+            <div class="sys">
+                <div class="sys_items-list">
+                    <div class="sys_item" data-sys="1">
+                        <label class="sys_item-title" for="sys1">
+                            Підсистема 1
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input" id="sys1" value="1">
+                    </div>
+                    <div class="sys_item" data-sys="2">
+                        <label class="sys_item-title" for="sys2">
+                            Підсистема 2
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input" id="sys2" value="2">
+                    </div>
+                    <div class="sys_item" data-sys="3">
+                        <label class="sys_item-title" for="sys3">
+                            Підсистема 3
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input" id="sys3" value="5">
+                    </div>
+                    <div class="sys_item hidden" data-sys="4">
+                        <label class="sys_item-title" for="sys4">
+                            Підсистема 4
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input" id="sys4">
+                    </div>
+                    <div class="sys_item hidden" data-sys="5">
+                        <label class="sys_item-title" for="sys5">
+                            Підсистема 5
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input" id="sys5">
+                    </div>
+                    <div class="sys_item hidden" data-sys="6">
+                        <label class="sys_item-title" for="sys6">
+                            Підсистема 6
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input" id="sys6">
+                    </div>
+                    <div class="sys_item hidden" data-sys="7">
+                        <label class="sys_item-title" for="sys7">
+                            Підсистема 7
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input" id="sys7">
+                    </div>
+                    <div class="sys_item hidden" data-sys="8">
+                        <label class="sys_item-title" for="sys8">
+                            Підсистема 8
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input" id="sys8">
+                    </div>
+                    <div class="sys_item hidden" data-sys="9">
+                        <label class="sys_item-title" for="sys9">
+                            Підсистема 9
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input" id="sys9">
+                    </div>
+                    <div class="sys_item hidden" data-sys="10">
+                        <label class="sys_item-title" for="sys10">
+                            Підсистема 10
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input" id="sys10">
+                    </div>
+                </div>
+                <div class="control">
+                    <p>
+                        Кількість підсистем:
+                    </p>
+                    <button class="decrease" id="sys-decrease"></button>
+                    <span class="js-sys-val">3</span>
+                    <button id="sys-increase"></button>
+                </div>
+            </div>
+            <div class="flex-cont">
+                <div class="lim">
+                    <p class="lim_title">
+                        Обмеження
+                    </p>
+                    <div class="lim_item" data-lim="1">
+                        <label data-sys="1">
+                            <input class="lim_input" id="lim1sys1" value="3">
+                            x<sub>1</sub>
+                        </label>
+                        <label data-sys="2">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys2" value="2">
+                            x<sub>2</sub>
+                        </label>
+                        <label data-sys="3">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys3" value="1">
+                            x<sub>3</sub>
+                        </label>
+                        <label class="hidden" data-sys="4">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys4">
+                            x<sub>4</sub>
+                        </label>
+                        <label class="hidden" data-sys="5">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys5">
+                            x<sub>5</sub>
+                        </label>
+                        <label class="hidden" data-sys="6">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys6">
+                            x<sub>6</sub>
+                        </label>
+                        <label class="hidden" data-sys="7">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys7">
+                            x<sub>7</sub>
+                        </label>
+                        <label class="hidden" data-sys="8">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys8">
+                            x<sub>8</sub>
+                        </label>
+                        <label class="hidden" data-sys="9">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys9">
+                            x<sub>9</sub>
+                        </label>
+                        <label class="hidden" data-sys="10">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys10">
+                            x<sub>10</sub>
+                        </label>
+                        <label>
+                            &nbsp;&le;&nbsp;
+                            <input class="lim_input lim_input-max" id="lim1max" value="12">
+                        </label>
+                    </div>
+                    <div class="lim_item hidden" data-lim="2">
+                        <label data-sys="1">
+                            <input class="lim_input" id="lim2sys1">
+                            x<sub>1</sub>
+                        </label>
+                        <label data-sys="2">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys2">
+                            x<sub>2</sub>
+                        </label>
+                        <label data-sys="3">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys3">
+                            x<sub>3</sub>
+                        </label>
+                        <label class="hidden" data-sys="4">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys4">
+                            x<sub>4</sub>
+                        </label>
+                        <label class="hidden" data-sys="5">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys5">
+                            x<sub>5</sub>
+                        </label>
+                        <label class="hidden" data-sys="6">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys6">
+                            x<sub>6</sub>
+                        </label>
+                        <label class="hidden" data-sys="7">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys7">
+                            x<sub>7</sub>
+                        </label>
+                        <label class="hidden" data-sys="8">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys8">
+                            x<sub>8</sub>
+                        </label>
+                        <label class="hidden" data-sys="9">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys9">
+                            x<sub>9</sub>
+                        </label>
+                        <label class="hidden" data-sys="10">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys10">
+                            x<sub>10</sub>
+                        </label>
+                        <label>
+                            &nbsp;&le;&nbsp;
+                            <input class="lim_input lim_input-max" id="lim2max">
+                        </label>
+                    </div>
+                    <div class="lim_item hidden" data-lim="3">
+                        <label data-sys="1">
+                            <input class="lim_input" id="lim3sys1">
+                            x<sub>1</sub>
+                        </label>
+                        <label data-sys="2">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys2">
+                            x<sub>2</sub>
+                        </label>
+                        <label data-sys="3">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys3">
+                            x<sub>3</sub>
+                        </label>
+                        <label class="hidden" data-sys="4">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys4">
+                            x<sub>4</sub>
+                        </label>
+                        <label class="hidden" data-sys="5">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys5">
+                            x<sub>5</sub>
+                        </label>
+                        <label class="hidden" data-sys="6">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys6">
+                            x<sub>6</sub>
+                        </label>
+                        <label class="hidden" data-sys="7">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys7">
+                            x<sub>7</sub>
+                        </label>
+                        <label class="hidden" data-sys="8">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys8">
+                            x<sub>8</sub>
+                        </label>
+                        <label class="hidden" data-sys="9">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys9">
+                            x<sub>9</sub>
+                        </label>
+                        <label class="hidden" data-sys="10">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys10">
+                            x<sub>10</sub>
+                        </label>
+                        <label>
+                            &nbsp;&le;&nbsp;
+                            <input class="lim_input lim_input-max" id="lim3max">
+                        </label>
+                    </div>
+                    <div class="lim_item hidden" data-lim="4">
+                        <label data-sys="1">
+                            <input class="lim_input" id="lim4sys1">
+                            x<sub>1</sub>
+                        </label>
+                        <label data-sys="2">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys2">
+                            x<sub>2</sub>
+                        </label>
+                        <label data-sys="3">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys3">
+                            x<sub>3</sub>
+                        </label>
+                        <label class="hidden" data-sys="4">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys4">
+                            x<sub>4</sub>
+                        </label>
+                        <label class="hidden" data-sys="5">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys5">
+                            x<sub>5</sub>
+                        </label>
+                        <label class="hidden" data-sys="6">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys6">
+                            x<sub>6</sub>
+                        </label>
+                        <label class="hidden" data-sys="7">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys7">
+                            x<sub>7</sub>
+                        </label>
+                        <label class="hidden" data-sys="8">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys8">
+                            x<sub>8</sub>
+                        </label>
+                        <label class="hidden" data-sys="9">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys9">
+                            x<sub>9</sub>
+                        </label>
+                        <label class="hidden" data-sys="10">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys10">
+                            x<sub>10</sub>
+                        </label>
+                        <label>
+                            &nbsp;&le;&nbsp;
+                            <input class="lim_input lim_input-max" id="lim4max">
+                        </label>
+                    </div>
+                    <div class="control">
+                        <p>
+                            Кількість обмежень:
+                        </p>
+                        <button class="decrease" id="lim-decrease" disabled></button>
+                        <span class="js-lim-val">1</span>
+                        <button id="lim-increase"></button>
+                    </div>
+                </div>
+                <div class="set">
+                    <p class="set_title">
+                        Налаштування
+                    </p>
+                    <label>
+                        T&nbsp;
+                        <input id="time" value="1" maxlength="3">
+                    </label>
+                    <label>
+                        Кількість прогонів&nbsp;
+                        <input id="iteration-amount" value="1000000" maxlength="7">
+                    </label>
+                    <label>
+                        &mu;&nbsp;
+                        <input id="recovery-intensity" value="1">
+                    </label>
+                </div>
+            </div>
+            <button class="run-trigger" id="app-run">
+                Знайти найнадійнішу схему резерву
+            </button>
+        </div>
+    </section>
+    <section class="hidden js-section" id="result">
+        <h2 class="im_title">
+            Розв'язок
+        </h2>
+        <div class="res">
+            <div class="res_res-amount">
+                <h3>
+                    Оптимальний резерв підсистем
+                </h3>
+                <div class="js-sub-sys-res"></div>
+            </div>
+            <div class="res_sys-rel">
+                <h3>
+                    Надійність системи
+                </h3>
+                <p class="js-sys-rel"></p>
+            </div>
+            <div class="res_table">
+                <h3>
+                    Надійність підсистем
+                </h3>
+                <div class="res_table-wrap">
+                    <table class="js-sub-sys-rel"></table>
+                </div>
+            </div>
+            <input type="checkbox" id="show-logs" checked>
+            <label for="show-logs">
+                Показати значення логарифмів
+            </label>
+        </div>
+    </section>
+</div>
+
+<div class="proc hidden" id="processing">
+    <div class="proc_cont">
+        <div class="proc_loader">
+            <div></div><div></div><div></div>
+        </div>
+        <p class="proc_alert">
+            Моделювання системи може зайняти декілька хвилин.<br>
+            Зачекайте, будь ласка.
+        </p>
+    </div>
+</div>
+
+<!--<script src="js/multiLimit.js"></script>-->
+<script src="js/interface.js"></script>
+<script src="js/imitationModeling.js"></script>
+<script src="js/dynamicProgramming.js"></script>
+</body>
+</html>
