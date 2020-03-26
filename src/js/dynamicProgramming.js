@@ -314,7 +314,9 @@ class DynamicProgramming {
         document.getElementsByClassName('js-sys-rel')[0].innerHTML = this.optimalReserve.reliability.toString();
         document.getElementsByClassName('js-sub-sys-rel')[0].innerHTML = tableInner;
 
-        inFace.toggleLoaderVisibility();
-        inFace.toggleSections(inFace);
+        window.inFace.toggleLoaderVisibility();
+        window.inFace.toggleSections(window.inFace);
     }
 }
+
+export {DynamicProgramming};

@@ -1,0 +1,44 @@
+{
+  "name": "1stalgo",
+  "version": "1.0.0",
+  "description": "Imitation modeling and dynamic programming algorithm",
+  "main": "src/js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladgalafm/ImitationModeling.git"
+  },
+  "author": "v.halushkin@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vladgalafm/ImitationModeling/issues"
+  },
+  "homepage": "https://github.com/vladgalafm/ImitationModeling#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "autoprefixer": "^9.7.5",
+    "babel-loader": "^8.1.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
+    "expose-loader": "^0.7.5",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "path": "^0.12.7",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^1.1.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "browserslist": [
+    "last 5 version",
+    "> 0.3%",
+    "IE 10"
+  ]
+}

@@ -1,3 +1,5 @@
+import {ImitationModeling} from "./imitationModeling";
+
 class Interface  {
     constructor () {
         this.minSysAmount = 1;
@@ -211,5 +213,5 @@ class Interface  {
 }
 
 
-const inFace = new Interface();
+window.inFace = new Interface();
 inFace.init();

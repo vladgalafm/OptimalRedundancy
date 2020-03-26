@@ -1,3 +1,5 @@
+import {DynamicProgramming} from "./dynamicProgramming";
+
 class ImitationModeling {
     constructor (data) {
         for (let key in data) {
@@ -143,3 +145,5 @@ class ImitationModeling {
         solutionAlgorithm.init();
     }
 }
+
+export {ImitationModeling};
