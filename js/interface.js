@@ -116,9 +116,12 @@ class Interface  {
 
     validateInputOnlyInteger (input) {
         let editedValue = input.value.replace(/[^0-9]/g, '');
+        if (editedValue.length > 1 && editedValue[0] === '0') {
+            editedValue = editedValue.substring(1, editedValue.length);
+        }
         input.value = editedValue;
 
-        if (editedValue.length) {
+        if (editedValue.length && editedValue[0] !== '0') {
             input.classList.remove('error');
         }
     }
@@ -129,7 +132,7 @@ class Interface  {
 
         this.inputsAll
             .forEach((input) => {
-                if (input.offsetParent !== null && !input.value.length) {
+                if (input.offsetParent !== null && (!input.value.length || parseInt(input.value) === 0)) {
                     input.classList.add('error');
                     errCount++;
                 } else {

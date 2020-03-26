@@ -14,8 +14,19 @@ class ImitationModeling {
 
             this.probs.push({});
 
-            for (let res = 0; res <= maxReserve; res++) {
-                this.probs[sys][res] = this.getSuccessProbability(sys, res);
+            // v1.01 - maxReserve always should be !== Infinity
+            if (maxReserve === Infinity) {
+                let res = 0;
+                let prob = 0;
+
+                while (prob < 1) {
+                    prob = this.getSuccessProbability(sys, res);
+                    this.probs[sys][res++] = prob;
+                }
+            } else {
+                for (let res = 0; res <= maxReserve; res++) {
+                    this.probs[sys][res] = this.getSuccessProbability(sys, res);
+                }
             }
         }
         const timeEnd = new Date();
