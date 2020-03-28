@@ -107,7 +107,7 @@ class ImitationModeling {
 
 
     getRepairTime (mu) {
-        return -1 / mu * Math.log(Math.random());
+        return (mu) ? -1 / mu * Math.log(Math.random()) : this.time;
     }
 
 

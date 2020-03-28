@@ -27,70 +27,70 @@
                             Підсистема 1
                         </label>
                         <span>&lambda;</span>
-                        <input class="sys_input" id="sys1" value="1">
+                        <input class="sys_input float" id="sys1" value="1">
                     </div>
                     <div class="sys_item" data-sys="2">
                         <label class="sys_item-title" for="sys2">
                             Підсистема 2
                         </label>
                         <span>&lambda;</span>
-                        <input class="sys_input" id="sys2" value="2">
+                        <input class="sys_input float" id="sys2" value="2">
                     </div>
                     <div class="sys_item" data-sys="3">
                         <label class="sys_item-title" for="sys3">
                             Підсистема 3
                         </label>
                         <span>&lambda;</span>
-                        <input class="sys_input" id="sys3" value="5">
+                        <input class="sys_input float" id="sys3" value="5">
                     </div>
                     <div class="sys_item hidden" data-sys="4">
                         <label class="sys_item-title" for="sys4">
                             Підсистема 4
                         </label>
                         <span>&lambda;</span>
-                        <input class="sys_input" id="sys4">
+                        <input class="sys_input float" id="sys4">
                     </div>
                     <div class="sys_item hidden" data-sys="5">
                         <label class="sys_item-title" for="sys5">
                             Підсистема 5
                         </label>
                         <span>&lambda;</span>
-                        <input class="sys_input" id="sys5">
+                        <input class="sys_input float" id="sys5">
                     </div>
                     <div class="sys_item hidden" data-sys="6">
                         <label class="sys_item-title" for="sys6">
                             Підсистема 6
                         </label>
                         <span>&lambda;</span>
-                        <input class="sys_input" id="sys6">
+                        <input class="sys_input float" id="sys6">
                     </div>
                     <div class="sys_item hidden" data-sys="7">
                         <label class="sys_item-title" for="sys7">
                             Підсистема 7
                         </label>
                         <span>&lambda;</span>
-                        <input class="sys_input" id="sys7">
+                        <input class="sys_input float" id="sys7">
                     </div>
                     <div class="sys_item hidden" data-sys="8">
                         <label class="sys_item-title" for="sys8">
                             Підсистема 8
                         </label>
                         <span>&lambda;</span>
-                        <input class="sys_input" id="sys8">
+                        <input class="sys_input float" id="sys8">
                     </div>
                     <div class="sys_item hidden" data-sys="9">
                         <label class="sys_item-title" for="sys9">
                             Підсистема 9
                         </label>
                         <span>&lambda;</span>
-                        <input class="sys_input" id="sys9">
+                        <input class="sys_input float" id="sys9">
                     </div>
                     <div class="sys_item hidden" data-sys="10">
                         <label class="sys_item-title" for="sys10">
                             Підсистема 10
                         </label>
                         <span>&lambda;</span>
-                        <input class="sys_input" id="sys10">
+                        <input class="sys_input float" id="sys10">
                     </div>
                 </div>
                 <div class="control">
@@ -340,18 +340,26 @@
                     <p class="set_title">
                         Налаштування
                     </p>
-                    <label>
-                        T&nbsp;
-                        <input id="time" value="1" maxlength="3">
-                    </label>
-                    <label>
-                        Кількість прогонів&nbsp;
-                        <input id="iteration-amount" value="100000" maxlength="7">
-                    </label>
-                    <label>
-                        &mu;&nbsp;
-                        <input id="recovery-intensity" value="1">
-                    </label>
+                    <div>
+                        <label>
+                            T&nbsp;
+                            <input class="float" id="time" value="1" maxlength="3">
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Кількість прогонів&nbsp;
+                            <input id="iteration-amount" value="100000" maxlength="7">
+                        </label>
+                    </div>
+                    <div>
+                        <input class="set_allow-input checkbox" type="checkbox" id="allow-recovery" checked>
+                        <label for="allow-recovery"></label>
+                        <label class="set_intense">
+                            &mu;&nbsp;
+                            <input class="float" id="recovery-intensity" value="1">
+                        </label>
+                    </div>
                 </div>
             </div>
             <button class="run-trigger" id="app-run">
@@ -384,7 +392,7 @@
                     <table class="js-sub-sys-rel"></table>
                 </div>
             </div>
-            <input type="checkbox" id="show-logs" checked>
+            <input class="checkbox" type="checkbox" id="show-logs" checked>
             <label for="show-logs">
                 Показати значення логарифмів
             </label>

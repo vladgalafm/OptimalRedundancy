@@ -18,11 +18,14 @@ class Interface  {
             limDecrease: document.getElementById('lim-decrease'),
             limIncrease: document.getElementById('lim-increase'),
             appRun: document.getElementById('app-run'),
-            toggleSections: document.getElementById('toggle-sections')
+            toggleSections: document.getElementById('toggle-sections'),
+            allowRecovery: document.getElementById('allow-recovery')
         };
         this.inputsAll = document.querySelectorAll('.im_main input:not([type="checkbox"])');
         this.sections = document.querySelectorAll('.js-section');
         this.showLogsCheckbox = document.getElementById('show-logs');
+
+        this.recoveryAllowed = true;
     }
 
 
@@ -39,12 +42,13 @@ class Interface  {
         this.inputsAll
             .forEach((input) => {
                 input.addEventListener('input', () => {
-                    $this.validateInputOnlyInteger(input);
+                    $this.validateInputValue(input);
                     $this.pushInputValueToStorage(input);
                 });
                 $this.pushInputValueToStorage(input);
             });
         this.trigger.toggleSections.addEventListener('click', () => $this.toggleSections($this));
+        this.trigger.allowRecovery.addEventListener('click', () => $this.toggleRecovery($this, this.trigger.allowRecovery));
         this.showLogsCheckbox.addEventListener('change', $this.toggleLogs);
 
         this.showLogsCheckbox.checked = !!(+localStorage.getItem('im-show-logs'));
@@ -116,14 +120,17 @@ class Interface  {
     }
 
 
-    validateInputOnlyInteger (input) {
-        let editedValue = input.value.replace(/[^0-9.]/g, '');
+    validateInputValue (input) {
+        let editedValue = (input.classList.contains('float')) ? input.value.replace(/[^0-9.]/g, '')
+            : input.value.replace(/[^0-9]/g, '');
+
         if (editedValue.length > 1 && editedValue[0] === '0' && editedValue[1] !== '.') {
             editedValue = editedValue.substring(1, editedValue.length);
         }
+
         input.value = editedValue;
 
-        if (editedValue.length && editedValue[0] !== '0') {
+        if (editedValue.length && parseFloat(editedValue) !== 0) {
             input.classList.remove('error');
         }
     }
@@ -134,7 +141,8 @@ class Interface  {
 
         this.inputsAll
             .forEach((input) => {
-                if (input.offsetParent !== null && (!input.value.length || parseFloat(input.value) === 0)) {
+                if (input.offsetParent !== null && !input.getAttribute('disabled') &&
+                    (!input.value.length || parseFloat(input.value) === 0)) {
                     input.classList.add('error');
                     errCount++;
                 } else {
@@ -156,6 +164,15 @@ class Interface  {
         $this.trigger.toggleSections.classList.remove('hidden');
         $this.sections
             .forEach((section) => section.classList.toggle('hidden'));
+    }
+
+
+    toggleRecovery ($this, checkbox) {
+        const recIndex = document.getElementById('recovery-intensity');
+
+        (checkbox.checked) ? recIndex.removeAttribute('disabled')
+            : recIndex.setAttribute('disabled', 'true');
+        $this.recoveryAllowed = checkbox.checked;
     }
 
 
@@ -194,7 +211,7 @@ class Interface  {
 
         data.time = this.inputValues['time'];
         data.iterations = this.inputValues['iteration-amount'];
-        data.mu = this.inputValues['recovery-intensity'];
+        data.mu = (this.recoveryAllowed) ? this.inputValues['recovery-intensity'] : false;
 
         return data;
     }

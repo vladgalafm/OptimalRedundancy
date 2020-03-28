@@ -32,6 +32,53 @@ input.error {
     border: 1px solid #ff0000;
 }
 
+input:disabled {
+    color: #bbbbbb;
+    background: #f3f3f3;
+    border: 1px solid #bbbbbb;
+}
+
+input.checkbox {
+    display: none;
+}
+input.checkbox + label {
+    position: relative;
+    padding: 5px 0 5px 30px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+input.checkbox + label::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333333;
+    border-radius: 5px;
+}
+input.checkbox + label::after {
+    position: absolute;
+    content: "";
+    top: calc(50% - 2px);
+    left: 7px;
+    transform: translateY(-50%) rotate(45deg);
+    display: block;
+    height: 13px;
+    width: 7px;
+    border-right: 2px solid #333333;
+    border-bottom: 2px solid #333333;
+    opacity: 0;
+    transition: 0.15s opacity linear;
+}
+input.checkbox:checked + label::after {
+    opacity: 1;
+}
+
 .im {
     position: relative;
     margin: 0 auto;
@@ -235,12 +282,12 @@ input.error {
 
 .lim_input {
     height: 2rem;
-    width: 20px;
+    width: 28px;
     text-align: center;
 }
 
 .lim_input-max {
-    width: 40px;
+    width: 44px;
 }
 
 .lim .control {
@@ -251,6 +298,16 @@ input.error {
     /*margin: 20px 0 0 0;*/
 }
 
+.set > div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.set > div:not(:last-of-type) {
+    margin-bottom: 13px;
+}
+
 .set label {
     display: block;
     font-size: 1.4rem;
@@ -258,14 +315,23 @@ input.error {
     text-align: right;
 }
 
-.set label:not(:last-of-type) {
-    margin-bottom: 13px;
-}
-
 .set input {
     padding: 2px 5px;
     width: 69px;
     height: 22px;
+}
+
+.set_allow-input + label {
+    margin-right: auto;
+    padding: 4px 0 4px 30px;
+    height: 22px;
+    flex-grow: 1;
+    line-height: 1;
+    text-align: left;
+}
+
+.set_allow-input:not(:checked) ~ .set_intense {
+    color: #bbbbbb;
 }
 
 .run-trigger {
@@ -420,49 +486,8 @@ input.error {
     background-color: #dddddd;
 }
 
-.res input {
-    /*position: absolute;*/
-    /*left: -9999px;*/
-    display: none;
-}
-
 .res label {
-    position: relative;
     margin-top: 5px;
-    padding: 5px 0 5px 30px;
-    font-size: 1.4rem;
-    cursor: pointer;
-    user-select: none;
-}
-
-.res label::before {
-    position: absolute;
-    content: "";
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    display: block;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #333333;
-    border-radius: 5px;
-}
-.res label::after {
-    position: absolute;
-    content: "";
-    top: calc(50% - 2px);
-    left: 7px;
-    transform: translateY(-50%) rotate(45deg);
-    display: block;
-    height: 13px;
-    width: 7px;
-    border-right: 2px solid #333333;
-    border-bottom: 2px solid #333333;
-    opacity: 0;
-    transition: 0.15s opacity linear;
-}
-.res input:checked + label::after {
-    opacity: 1;
 }
 
 @media screen and (max-width: 991px) {
