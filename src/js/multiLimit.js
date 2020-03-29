@@ -1,12 +1,12 @@
 const MultiLimit = function () {
     this.limits = [
         {
-            max: 12,
-            coefs: [3, 2, 1]
+            max: 470,
+            coefs: [12, 23, 34, 45]
         },
         {
-            max: 40,
-            coefs: [12, 8, 4]
+            max: 20,
+            coefs: [1, 1, 1, 1]
         },
         // {
         //     max: 60,
@@ -18,52 +18,54 @@ const MultiLimit = function () {
         // },
     ];
     this.phi = [
-        {
-            0: -0.999221355,
-            1: -0.240570777,
-            2: -0.048594833,
-            3: -0.007781195,
-            4: -0.000975475,
-            // 5: 0,
-            // 6: 0,
-            // 7: 0,
-            // 8: 0,
-            // 9: 0,
-            // 10: 0,
-            // 11: 0,
-            // 12: 0
-        },
-        {
-            0: -1.999595776,
-            1: -0.725253103,
-            2: -0.245560442,
-            3: -0.072127780,
-            4: -0.018269882,
-            5: -0.003777124,
-            6: -0.000752282,
-            // 7: 0,
-            // 8: 0,
-            // 9: 0,
-            // 10: 0,
-            // 11: 0,
-            // 12: 0
-        },
-        {
-            0: -4.988189105,
-            1: -2.686117491,
-            2: -1.468207483,
-            3: -0.776496181,
-            4: -0.387517140,
-            5: -0.178869521,
-            6: -0.075321785,
-            7: -0.028710222,
-            8: -0.010071548,
-            9: -0.003130896,
-            10: -0.000907411,
-            11: -0.000221024,
-            12: -0.000046001
-        }
+        // {
+        //     0: -0.999221355,
+        //     1: -0.240570777,
+        //     2: -0.048594833,
+        //     3: -0.007781195,
+        //     4: -0.000975475,
+        //     5: 0,
+        //     6: 0,
+        //     7: 0,
+        //     8: 0,
+        //     9: 0,
+        //     10: 0,
+        //     11: 0,
+        //     12: 0
+        // },
+        // {
+        //     0: -1.999595776,
+        //     1: -0.725253103,
+        //     2: -0.245560442,
+        //     3: -0.072127780,
+        //     4: -0.018269882,
+        //     5: -0.003777124,
+        //     6: -0.000752282,
+        //     7: 0,
+        //     8: 0,
+        //     9: 0,
+        //     10: 0,
+        //     11: 0,
+        //     12: 0
+        // },
+        // {
+        //     0: -4.988189105,
+        //     1: -2.686117491,
+        //     2: -1.468207483,
+        //     3: -0.776496181,
+        //     4: -0.387517140,
+        //     5: -0.178869521,
+        //     6: -0.075321785,
+        //     7: -0.028710222,
+        //     8: -0.010071548,
+        //     9: -0.003130896,
+        //     10: -0.000907411,
+        //     11: -0.000221024,
+        //     12: -0.000046001
+        // }
     ];
+    this.probs = [];
+
     this.tablesData = [];
     this.optimalReserve = [];
 
@@ -80,6 +82,12 @@ MultiLimit.prototype.init = function () {
 
     this.limitsNum = this.limits.length;
     this.systemsNum = this.limits[0].coefs.length;
+
+    this.probs = this.generateProbValues();
+
+    if ((!this.phi || !this.phi.length) && this.probs.length) {
+        this.phi = this.convertProbIntoPhi();
+    }
 
     if (this.checkInputData()) {
         this.run();
@@ -101,6 +109,38 @@ MultiLimit.prototype.run = function () {
     this.timeCount.finish = new Date();
 
     this.printResults();
+};
+
+
+MultiLimit.prototype.generateProbValues = function () {
+    const prob = [];
+    const coefficient = [0.2, 0.3, 0.25, 0.15];
+
+    for (let i = 0; i < this.systemsNum; i++) {
+        const obj = {};
+        const max = Math.min.apply(null, this.limits.map((item) => parseInt(item.max / item.coefs[i])));
+
+        for (let num = 0; num <= max; num++) {
+            obj[num] = 1 - Math.pow(coefficient[i], num);
+        }
+
+        prob.push(obj);
+    }
+
+    return prob;
+};
+
+
+MultiLimit.prototype.convertProbIntoPhi = function () {
+    return this.probs.map(function (sys) {
+        const obj = {};
+
+        for (let num in sys) {
+            obj[num] = parseFloat(Math.log(sys[num]).toFixed(9));
+        }
+
+        return obj;
+    });
 };
 
 
@@ -343,10 +383,11 @@ MultiLimit.prototype.getOptimalAmountOfReserve = function (data) {
 
 
 MultiLimit.prototype.printResults = function () {
+    const app = this;
     let print = '';
 
-    print += 'Время работы алгоритма: ' + ((this.timeCount.finish - this.timeCount.start) / 1000) + ' сек\n';
-    print += '\nОграничения:\n';
+    print += 'Час роботи алгоритму: ' + ((this.timeCount.finish - this.timeCount.start) / 1000) + ' сек\n';
+    print += '\nОбмеження:\n';
 
     for (let i = 0; i < this.limitsNum; i++) {
         for( let j = 0; j < this.systemsNum; j++) {
@@ -356,13 +397,18 @@ MultiLimit.prototype.printResults = function () {
         print += ' <= ' + this.limits[i].max + '\n';
     }
 
-    print += '\nОптимальный резерв подсистем:\n';
+    print += '\nОптимальний резерв підсистем:\n';
 
     this.optimalReserve.forEach(function (val, index) {
         print += '№' + (index + 1) + ': ' + val + '\n';
     });
 
-    print += '\nТабличные данные:';
+    print += '\nНадійність системи:\n';
+    print += this.optimalReserve
+        .reduce((mult, current, i) => mult * app.probs[i][current], 1)
+        .toFixed(7) * 1 + '\n';
+
+    print += '\nТабличні дані:';
 
     console.log(print);
     console.log(this.tablesData);
