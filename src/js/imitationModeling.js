@@ -27,7 +27,8 @@ class ImitationModeling {
                 }
             } else {
                 for (let res = 0; res <= maxReserve; res++) {
-                    this.probs[sys][res] = this.getSuccessProbability(sys, res);
+                    this.probs[sys][res] = (this.probs[sys][res - 1] === 1 && this.iterations >= 100000) ?
+                        1 : this.getSuccessProbability(sys, res);
                 }
             }
         }
