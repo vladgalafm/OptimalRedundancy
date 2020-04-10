@@ -19,7 +19,8 @@ body {
     background-color: #dddddd;
 }
 
-input {
+input,
+select {
     font-family: 'Roboto', Arial, sans-serif;
     font-size: 1.4rem;
     line-height: 1;
@@ -175,7 +176,7 @@ input.checkbox:checked + label::after {
     font-size: 1.6rem;
 }
 
-.sys_item:nth-last-of-type(-n+5) {
+.sys_item:nth-last-of-type(-n+10) {
     padding-top: 20px;
 }
 
@@ -277,6 +278,8 @@ input.checkbox:checked + label::after {
 }
 
 .lim_item label {
+    margin-bottom: 5px;
+    display: inline-block;
     white-space: nowrap;
 }
 
@@ -315,10 +318,15 @@ input.checkbox:checked + label::after {
     text-align: right;
 }
 
-.set input {
+.set input,
+.set select {
     padding: 2px 5px;
     width: 69px;
     height: 22px;
+}
+
+.set select {
+    padding-top: 0;
 }
 
 .set_allow-input + label {
@@ -347,13 +355,17 @@ input.checkbox:checked + label::after {
     cursor: pointer;
 }
 
-.proc {
+.curtain {
     position: fixed;
     z-index: 10;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    background-color: rgba(36, 36, 36, 0.6);
+}
+
+.proc {
     background-color: rgba(36, 36, 36, 0.825);
 }
 
@@ -414,6 +426,98 @@ input.checkbox:checked + label::after {
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 25px 20px;
+    width: 85%;
+    min-width: 300px;
+    max-width: 480px;
+    text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.75);
+}
+
+.popup > *:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.popup h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.popup p {
+    font-size: 1.4rem;
+    line-height: 1.25;
+}
+
+.popup_btn {
+    width: 110px;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 1.6rem;
+    line-height: 34px;
+    font-weight: 500;
+    color: #333333;
+    background-color: #ffffff;
+    box-shadow: inset 0 0 2px 2px rgb(24, 200, 24);
+    cursor: pointer;
+}
+
+.popup_btn-cancel {
+    box-shadow: inset 0 0 2px 2px rgb(200, 24, 24);
+}
+
+.popup_btn:nth-of-type(2) {
+    margin-left: 20px;
+}
+
+.popup_close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.popup_close::before,
+.popup_close::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    display: block;
+    height: 26px;
+    width: 3px;
+    background-color: #333333;
+    border-radius: 2px;
+}
+.popup_close::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+@media screen and (min-width: 451px) {
+    .popup {
+        padding: 35px 30px;
+    }
+    .popup > *:not(:last-child) {
+        margin-bottom: 25px;
+    }
+    .popup p {
+        font-size: 1.6rem;
+    }
+    .popup_close {
+        top: 15px;
+        right: 15px;
     }
 }
 
@@ -494,7 +598,7 @@ input.checkbox:checked + label::after {
     .sys_item {
         width: 25%;
     }
-    .sys_item:nth-last-of-type(-n+6) {
+    .sys_item:nth-last-of-type(-n+11) {
         padding-top: 30px;
     }
     /*.lim {*/
@@ -509,7 +613,7 @@ input.checkbox:checked + label::after {
     .sys_item {
         width: 33.333%;
     }
-    .sys_item:nth-last-of-type(-n+7) {
+    .sys_item:nth-last-of-type(-n+12) {
         padding-top: 30px;
     }
 }
@@ -524,7 +628,7 @@ input.checkbox:checked + label::after {
     .sys_item {
         width: 50%;
     }
-    .sys_item:nth-last-of-type(-n+8) {
+    .sys_item:nth-last-of-type(-n+13) {
         padding-top: 30px;
     }
 }
@@ -556,5 +660,5 @@ input.checkbox:checked + label::after {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
