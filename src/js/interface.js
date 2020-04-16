@@ -20,7 +20,8 @@ class Interface  {
             appRun: document.getElementById('app-run'),
             limIncrease: document.getElementById('lim-increase'),
             toggleSections: document.getElementById('toggle-sections'),
-            allowRecovery: document.getElementById('allow-recovery')
+            allowRecovery: document.getElementById('allow-recovery'),
+            projectInfo: document.getElementsByClassName('js-project-info')[0]
         };
         this.alertPopup = document.getElementById('data-limit-alert');
         this.appRunModalBtn = document.getElementsByClassName('js-run-app')[0];
@@ -60,6 +61,7 @@ class Interface  {
         this.trigger.toggleSections.addEventListener('click', () => $this.toggleSections($this));
         this.trigger.allowRecovery.addEventListener('click', () => $this.toggleRecovery($this, this.trigger.allowRecovery));
         this.showLogsCheckbox.addEventListener('change', $this.toggleLogs);
+        this.trigger.projectInfo.addEventListener('click', (e) => $this.toggleProjectInfo(e, $this));
 
         this.showLogsCheckbox.checked = !!(+localStorage.getItem('im-show-logs'));
     }
@@ -252,6 +254,13 @@ class Interface  {
 
     closeAlertPopup ($this) {
         $this.alertPopup.classList.add('hidden');
+    }
+
+
+    toggleProjectInfo (event, $this) {
+        if (event.target.classList.contains('js-info-description')) return;
+
+        $this.trigger.projectInfo.classList.toggle('active');
     }
 
 
