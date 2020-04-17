@@ -289,7 +289,8 @@ class DynamicProgramming {
         const rowsAmount = Math.max.apply(null, this.phi.map((item) => Object.keys(item).length));
         const showLogs = !!+localStorage.getItem('im-show-logs');
         let resAmountInner = '';
-        let tableInner = '<tr><th>К-ть резерву</th>';
+        let tableInner = '<tr><th>' + ((document.documentElement.getAttribute('lang') === 'en') ?
+            'Reserve num' : 'К-ть резерву') + '</th>';
 
         for (let sys = 1; sys <= this.systemsNum; sys++) {
             resAmountInner += '<p>№' + sys + ': <span>' + this.optimalReserve.amount[sys - 1] + '</span></p>';
