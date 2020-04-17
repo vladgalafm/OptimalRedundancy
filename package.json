@@ -1,7 +1,7 @@
 {
   "name": "1stalgo",
-  "version": "1.0.0",
-  "description": "Imitation modeling and dynamic programming algorithm",
+  "version": "1.4.0",
+  "description": "Solve optimal redundancy problem using imitation modeling and dynamic programming algorithm",
   "main": "src/js/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vladgalafm/ImitationModeling.git"
+    "url": "git+https://github.com/vladgalafm/OptimalRedundancy.git"
   },
   "author": "v.halushkin@gmail.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vladgalafm/ImitationModeling/issues"
+    "url": "https://github.com/vladgalafm/OptimalRedundancy/issues"
   },
-  "homepage": "https://github.com/vladgalafm/ImitationModeling#readme",
+  "homepage": "https://github.com/vladgalafm/OptimalRedundancy#readme",
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",

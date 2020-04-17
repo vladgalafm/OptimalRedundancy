@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Optimal redundancy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i&display=swap&subset=cyrillic" rel="stylesheet">
+</head>
+<body>
+
+<div class="im">
+    <button class="im-switch hidden" id="toggle-sections">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <section class="js-section" id="start">
+        <h1 class="im_title">
+            The problem of optimal redundancy
+        </h1>
+        <div class="im_main">
+            <div class="sys">
+                <div class="sys_items-list">
+                    <div class="sys_item" data-sys="1">
+                        <label class="sys_item-title" for="sys1">
+                            Subsystem 1
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input float" id="sys1" value="1">
+                    </div>
+                    <div class="sys_item" data-sys="2">
+                        <label class="sys_item-title" for="sys2">
+                            Subsystem 2
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input float" id="sys2" value="2">
+                    </div>
+                    <div class="sys_item" data-sys="3">
+                        <label class="sys_item-title" for="sys3">
+                            Subsystem 3
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input float" id="sys3" value="5">
+                    </div>
+                    <div class="sys_item hidden" data-sys="4">
+                        <label class="sys_item-title" for="sys4">
+                            Subsystem 4
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input float" id="sys4">
+                    </div>
+                    <div class="sys_item hidden" data-sys="5">
+                        <label class="sys_item-title" for="sys5">
+                            Subsystem 5
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input float" id="sys5">
+                    </div>
+                    <div class="sys_item hidden" data-sys="6">
+                        <label class="sys_item-title" for="sys6">
+                            Subsystem 6
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input float" id="sys6">
+                    </div>
+                    <div class="sys_item hidden" data-sys="7">
+                        <label class="sys_item-title" for="sys7">
+                            Subsystem 7
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input float" id="sys7">
+                    </div>
+                    <div class="sys_item hidden" data-sys="8">
+                        <label class="sys_item-title" for="sys8">
+                            Subsystem 8
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input float" id="sys8">
+                    </div>
+                    <div class="sys_item hidden" data-sys="9">
+                        <label class="sys_item-title" for="sys9">
+                            Subsystem 9
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input float" id="sys9">
+                    </div>
+                    <div class="sys_item hidden" data-sys="10">
+                        <label class="sys_item-title" for="sys10">
+                            Subsystem 10
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input float" id="sys10">
+                    </div>
+                    <div class="sys_item hidden" data-sys="11">
+                        <label class="sys_item-title" for="sys11">
+                            Subsystem 11
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input float" id="sys11">
+                    </div>
+                    <div class="sys_item hidden" data-sys="12">
+                        <label class="sys_item-title" for="sys12">
+                            Subsystem 12
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input float" id="sys12">
+                    </div>
+                    <div class="sys_item hidden" data-sys="13">
+                        <label class="sys_item-title" for="sys13">
+                            Subsystem 13
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input float" id="sys13">
+                    </div>
+                    <div class="sys_item hidden" data-sys="14">
+                        <label class="sys_item-title" for="sys14">
+                            Subsystem 14
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input float" id="sys14">
+                    </div>
+                    <div class="sys_item hidden" data-sys="15">
+                        <label class="sys_item-title" for="sys15">
+                            Subsystem 15
+                        </label>
+                        <span>&lambda;</span>
+                        <input class="sys_input float" id="sys15">
+                    </div>
+                </div>
+                <div class="control">
+                    <p>
+                        Subsystems amount:
+                    </p>
+                    <button class="decrease" id="sys-decrease"></button>
+                    <span class="js-sys-val">3</span>
+                    <button id="sys-increase"></button>
+                </div>
+            </div>
+            <div class="flex-cont">
+                <div class="lim">
+                    <p class="lim_title">
+                        Limitations
+                    </p>
+                    <div class="lim_item" data-lim="1">
+                        <label data-sys="1">
+                            <input class="lim_input" id="lim1sys1" value="3">
+                            x<sub>1</sub>
+                        </label>
+                        <label data-sys="2">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys2" value="2">
+                            x<sub>2</sub>
+                        </label>
+                        <label data-sys="3">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys3" value="1">
+                            x<sub>3</sub>
+                        </label>
+                        <label class="hidden" data-sys="4">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys4">
+                            x<sub>4</sub>
+                        </label>
+                        <label class="hidden" data-sys="5">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys5">
+                            x<sub>5</sub>
+                        </label>
+                        <label class="hidden" data-sys="6">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys6">
+                            x<sub>6</sub>
+                        </label>
+                        <label class="hidden" data-sys="7">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys7">
+                            x<sub>7</sub>
+                        </label>
+                        <label class="hidden" data-sys="8">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys8">
+                            x<sub>8</sub>
+                        </label>
+                        <label class="hidden" data-sys="9">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys9">
+                            x<sub>9</sub>
+                        </label>
+                        <label class="hidden" data-sys="10">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys10">
+                            x<sub>10</sub>
+                        </label>
+                        <label class="hidden" data-sys="11">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys11">
+                            x<sub>11</sub>
+                        </label>
+                        <label class="hidden" data-sys="12">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys12">
+                            x<sub>12</sub>
+                        </label>
+                        <label class="hidden" data-sys="13">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys13">
+                            x<sub>13</sub>
+                        </label>
+                        <label class="hidden" data-sys="14">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys14">
+                            x<sub>14</sub>
+                        </label>
+                        <label class="hidden" data-sys="15">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim1sys15">
+                            x<sub>15</sub>
+                        </label>
+                        <label>
+                            &nbsp;&le;&nbsp;
+                            <input class="lim_input lim_input-max" id="lim1max" value="12">
+                        </label>
+                    </div>
+                    <div class="lim_item hidden" data-lim="2">
+                        <label data-sys="1">
+                            <input class="lim_input" id="lim2sys1">
+                            x<sub>1</sub>
+                        </label>
+                        <label data-sys="2">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys2">
+                            x<sub>2</sub>
+                        </label>
+                        <label data-sys="3">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys3">
+                            x<sub>3</sub>
+                        </label>
+                        <label class="hidden" data-sys="4">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys4">
+                            x<sub>4</sub>
+                        </label>
+                        <label class="hidden" data-sys="5">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys5">
+                            x<sub>5</sub>
+                        </label>
+                        <label class="hidden" data-sys="6">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys6">
+                            x<sub>6</sub>
+                        </label>
+                        <label class="hidden" data-sys="7">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys7">
+                            x<sub>7</sub>
+                        </label>
+                        <label class="hidden" data-sys="8">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys8">
+                            x<sub>8</sub>
+                        </label>
+                        <label class="hidden" data-sys="9">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys9">
+                            x<sub>9</sub>
+                        </label>
+                        <label class="hidden" data-sys="10">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys10">
+                            x<sub>10</sub>
+                        </label>
+                        <label class="hidden" data-sys="11">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys11">
+                            x<sub>11</sub>
+                        </label>
+                        <label class="hidden" data-sys="12">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys12">
+                            x<sub>12</sub>
+                        </label>
+                        <label class="hidden" data-sys="13">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys13">
+                            x<sub>13</sub>
+                        </label>
+                        <label class="hidden" data-sys="14">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys14">
+                            x<sub>14</sub>
+                        </label>
+                        <label class="hidden" data-sys="15">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim2sys15">
+                            x<sub>15</sub>
+                        </label>
+                        <label>
+                            &nbsp;&le;&nbsp;
+                            <input class="lim_input lim_input-max" id="lim2max">
+                        </label>
+                    </div>
+                    <div class="lim_item hidden" data-lim="3">
+                        <label data-sys="1">
+                            <input class="lim_input" id="lim3sys1">
+                            x<sub>1</sub>
+                        </label>
+                        <label data-sys="2">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys2">
+                            x<sub>2</sub>
+                        </label>
+                        <label data-sys="3">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys3">
+                            x<sub>3</sub>
+                        </label>
+                        <label class="hidden" data-sys="4">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys4">
+                            x<sub>4</sub>
+                        </label>
+                        <label class="hidden" data-sys="5">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys5">
+                            x<sub>5</sub>
+                        </label>
+                        <label class="hidden" data-sys="6">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys6">
+                            x<sub>6</sub>
+                        </label>
+                        <label class="hidden" data-sys="7">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys7">
+                            x<sub>7</sub>
+                        </label>
+                        <label class="hidden" data-sys="8">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys8">
+                            x<sub>8</sub>
+                        </label>
+                        <label class="hidden" data-sys="9">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys9">
+                            x<sub>9</sub>
+                        </label>
+                        <label class="hidden" data-sys="10">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys10">
+                            x<sub>10</sub>
+                        </label>
+                        <label class="hidden" data-sys="11">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys11">
+                            x<sub>11</sub>
+                        </label>
+                        <label class="hidden" data-sys="12">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys12">
+                            x<sub>12</sub>
+                        </label>
+                        <label class="hidden" data-sys="13">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys13">
+                            x<sub>13</sub>
+                        </label>
+                        <label class="hidden" data-sys="14">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys14">
+                            x<sub>14</sub>
+                        </label>
+                        <label class="hidden" data-sys="15">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim3sys15">
+                            x<sub>15</sub>
+                        </label>
+                        <label>
+                            &nbsp;&le;&nbsp;
+                            <input class="lim_input lim_input-max" id="lim3max">
+                        </label>
+                    </div>
+                    <div class="lim_item hidden" data-lim="4">
+                        <label data-sys="1">
+                            <input class="lim_input" id="lim4sys1">
+                            x<sub>1</sub>
+                        </label>
+                        <label data-sys="2">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys2">
+                            x<sub>2</sub>
+                        </label>
+                        <label data-sys="3">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys3">
+                            x<sub>3</sub>
+                        </label>
+                        <label class="hidden" data-sys="4">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys4">
+                            x<sub>4</sub>
+                        </label>
+                        <label class="hidden" data-sys="5">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys5">
+                            x<sub>5</sub>
+                        </label>
+                        <label class="hidden" data-sys="6">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys6">
+                            x<sub>6</sub>
+                        </label>
+                        <label class="hidden" data-sys="7">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys7">
+                            x<sub>7</sub>
+                        </label>
+                        <label class="hidden" data-sys="8">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys8">
+                            x<sub>8</sub>
+                        </label>
+                        <label class="hidden" data-sys="9">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys9">
+                            x<sub>9</sub>
+                        </label>
+                        <label class="hidden" data-sys="10">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys10">
+                            x<sub>10</sub>
+                        </label>
+                        <label class="hidden" data-sys="11">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys11">
+                            x<sub>11</sub>
+                        </label>
+                        <label class="hidden" data-sys="12">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys12">
+                            x<sub>12</sub>
+                        </label>
+                        <label class="hidden" data-sys="13">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys13">
+                            x<sub>13</sub>
+                        </label>
+                        <label class="hidden" data-sys="14">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys14">
+                            x<sub>14</sub>
+                        </label>
+                        <label class="hidden" data-sys="15">
+                            &nbsp;+&nbsp;
+                            <input class="lim_input" id="lim4sys15">
+                            x<sub>15</sub>
+                        </label>
+                        <label>
+                            &nbsp;&le;&nbsp;
+                            <input class="lim_input lim_input-max" id="lim4max">
+                        </label>
+                    </div>
+                    <div class="control">
+                        <p>
+                            Limits amount:
+                        </p>
+                        <button class="decrease" id="lim-decrease" disabled></button>
+                        <span class="js-lim-val">1</span>
+                        <button id="lim-increase"></button>
+                    </div>
+                </div>
+                <div class="set">
+                    <p class="set_title">
+                        Settings
+                    </p>
+                    <div>
+                        <label>
+                            T&nbsp;
+                            <input class="float" id="time" value="1" maxlength="3">
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Iterations amount&nbsp;
+                            <select id="iteration-amount">
+                                <option value="100000" selected>10&#8309;</option>
+                                <option value="1000000">10&#8310;</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        <input class="set_allow-input checkbox" type="checkbox" id="allow-recovery" checked>
+                        <label for="allow-recovery"></label>
+                        <label class="set_intense">
+                            &mu;&nbsp;
+                            <input class="float" id="recovery-intensity" value="1">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button class="run-trigger" id="app-run">
+                Find solution
+            </button>
+        </div>
+    </section>
+    <section class="hidden js-section" id="result">
+        <h2 class="im_title">
+            Solution
+        </h2>
+        <div class="res">
+            <div class="res_res-amount">
+                <h3>
+                    Subsystems optimal reserve
+                </h3>
+                <div class="js-sub-sys-res"></div>
+            </div>
+            <div class="res_sys-rel">
+                <h3>
+                    System reliability
+                </h3>
+                <p class="js-sys-rel"></p>
+            </div>
+            <div class="res_table">
+                <h3>
+                    Subsystems reliability
+                </h3>
+                <div class="res_table-wrap">
+                    <table class="js-sub-sys-rel"></table>
+                </div>
+            </div>
+            <input class="checkbox" type="checkbox" id="show-logs" checked>
+            <label for="show-logs">
+                Show logarithm values
+            </label>
+        </div>
+    </section>
+</div>
+
+<div class="curtain proc hidden" id="processing">
+    <div class="proc_cont">
+        <div class="proc_loader">
+            <div></div><div></div><div></div>
+        </div>
+        <p class="proc_alert">
+            System modeling may take several minutes.<br>
+            Please, wait.
+        </p>
+    </div>
+</div>
+
+<div class="curtain hidden" id="data-limit-alert">
+    <div class="popup">
+        <button class="popup_close js-close-popup"></button>
+        <h3>
+            Warning
+        </h3>
+        <p>
+            Large values of limitation coefficients and big amount of subsystems require very volumetric calculations,
+            which can lead to a complete hang of your device. Continue?
+        </p>
+        <div class="popup_btn-wrap">
+            <button class="popup_btn js-close-popup js-run-app">Yes</button>
+            <button class="popup_btn popup_btn-cancel js-close-popup">No</button>
+        </div>
+    </div>
+</div>
+
+<div class="info js-project-info">
+    <div class="info_close"></div>
+    <div class="info_cont js-info-description">
+        Program description and source code can be found
+        <a href="https://github.com/vladgalafm/OptimalRedundancy#readme" target="_blank">there</a>
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -8,7 +8,7 @@ module.exports = {
   entry: './src/js/index.js', // An entry point indicates which module webpack should use to begin building
   output: { // The output property tells webpack where to emit the bundles it creates and how to name these files
     filename: 'js/main.js', // output.filename tells webpack the name of our bundle
-    path: path.resolve(__dirname, 'dist/'), // output.path tells webpack where we want our bundle to be emitted to
+    path: path.resolve(__dirname, 'en/'), // output.path tells webpack where we want our bundle to be emitted to
     publicPath: '../', // this helps to find correct path to images from style.css
   },
   plugins: [
