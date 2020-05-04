@@ -28,7 +28,7 @@ may recover and be returned to their subsystems as reserve elements.
 
 ## How to use program
 
-Page with program is available via <a href="https://vladgalafm.github.io/OptimalRedundancy/en/" target="_blank">this link</a>.
+Page with program is available via [this link](https://vladgalafm.github.io/OptimalRedundancy/en/).
 
 To get solution for your task, you should:
 
